@@ -1,14 +1,16 @@
 package com.jfilowk.elementstest.presentation.download_info;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
+import com.jfilowk.elementstest.base.BaseActivity;
+import com.jfilowk.elementstest.presentation.list_csv.ListItemsActivity;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends BaseActivity {
 
   @BindView(R.id.btn_show_me) Button btnShowList;
 
@@ -19,9 +21,10 @@ public class MainMenu extends AppCompatActivity {
     ButterKnife.bind(this);
   }
 
-  @OnClick(R.id.btn_show_me)
-  public void navigateToList(){
-    // TODO: implement navigation to
+  @OnClick(R.id.btn_show_me) public void navigateToList() {
+    // TODO: create Intents guays
+    Intent intent = new Intent(this, ListItemsActivity.class);
+    startActivity(intent);
   }
 
   @Override protected void onResume() {

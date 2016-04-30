@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">ElementsTest</string>
   <string name="show_me_the_csv">Show me the CSV</string>
+  <string name="retry">Retry</string>
 </resources>
