@@ -37,7 +37,7 @@ public class ElementTest extends Application {
     component.inject(this);
   }
 
-  private ApplicationComponent getComponent() {
+  public ApplicationComponent getApplicationComponent() {
     return this.component;
   }
 }
