@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.domain;
+package com.jfilowk.elementstest.presentation.internal;
 
 import android.os.Handler;
 import android.os.Looper;

@@ -1,7 +1,7 @@
 package com.jfilowk.elementstest.domain.interactor;
 
 import com.jfilowk.elementstest.domain.Item;
-import com.jfilowk.elementstest.domain.MainThread;
+import com.jfilowk.elementstest.presentation.internal.MainThread;
 import com.jfilowk.elementstest.domain.repository.ItemRepository;
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;

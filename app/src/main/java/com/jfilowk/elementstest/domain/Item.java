@@ -40,7 +40,7 @@ public class Item {
   }
 
   @Override public String toString() {
-    return "Item{" +
+    return "ItemModel{" +
         "title='" + title + '\'' +
         ", description='" + description + '\'' +
         ", url='" + url + '\'' +

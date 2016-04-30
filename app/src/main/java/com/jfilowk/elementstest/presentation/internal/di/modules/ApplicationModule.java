@@ -2,8 +2,8 @@ package com.jfilowk.elementstest.presentation.internal.di.modules;
 
 import android.content.Context;
 import com.jfilowk.elementstest.ElementTest;
-import com.jfilowk.elementstest.domain.MainThread;
-import com.jfilowk.elementstest.domain.MainThreadImpl;
+import com.jfilowk.elementstest.presentation.internal.MainThread;
+import com.jfilowk.elementstest.presentation.internal.MainThreadImpl;
 import dagger.Module;
 import dagger.Provides;
 import java.util.concurrent.ExecutorService;
