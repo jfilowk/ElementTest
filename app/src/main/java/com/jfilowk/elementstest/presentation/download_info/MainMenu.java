@@ -8,7 +8,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseActivity;
-import com.jfilowk.elementstest.presentation.list_csv.ListItemsActivity;
+import com.jfilowk.elementstest.presentation.list_csv.ItemsListActivity;
 
 public class MainMenu extends BaseActivity {
 
@@ -23,7 +23,7 @@ public class MainMenu extends BaseActivity {
 
   @OnClick(R.id.btn_show_me) public void navigateToList() {
     // TODO: create Intents guays
-    Intent intent = new Intent(this, ListItemsActivity.class);
+    Intent intent = new Intent(this, ItemsListActivity.class);
     startActivity(intent);
   }
 
