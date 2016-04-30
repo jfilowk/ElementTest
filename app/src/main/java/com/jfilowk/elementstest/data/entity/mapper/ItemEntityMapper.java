@@ -4,8 +4,13 @@ import com.jfilowk.elementstest.data.entity.ItemEntity;
 import com.jfilowk.elementstest.domain.Item;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.inject.Inject;
 
 public class ItemEntityMapper {
+
+  @Inject
+  public ItemEntityMapper() {
+  }
 
   public Item transform(ItemEntity itemEntity) {
 
