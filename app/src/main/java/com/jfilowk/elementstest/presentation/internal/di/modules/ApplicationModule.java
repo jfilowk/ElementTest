@@ -2,6 +2,8 @@ package com.jfilowk.elementstest.presentation.internal.di.modules;
 
 import android.content.Context;
 import com.jfilowk.elementstest.ElementTest;
+import com.jfilowk.elementstest.data.network.ElementsService;
+import com.jfilowk.elementstest.data.network.ServiceGenerator;
 import com.jfilowk.elementstest.presentation.internal.MainThread;
 import com.jfilowk.elementstest.presentation.internal.MainThreadImpl;
 import dagger.Module;
@@ -30,4 +32,12 @@ import javax.inject.Singleton;
     return mainThread;
   }
 
+  @Provides @Singleton ServiceGenerator provideServiceGenerator() {
+    return new ServiceGenerator(
+        "https://docs.google.com/spr eadsheet/ccc?key=0Aqg9JQbnOwBwdEZFN2JKeldGZGFzUWVrNDBsczZxLUE&single=true&gid=0&output=csv");
+  }
+
+  @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator) {
+    return new ElementsService(serviceGenerator);
+  }
 }
