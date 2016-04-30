@@ -3,7 +3,7 @@ package com.jfilowk.elementstest.presentation.list_csv;
 import com.jfilowk.elementstest.domain.Item;
 import com.jfilowk.elementstest.domain.interactor.GetItemListUseCase;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
-import com.jfilowk.elementstest.presentation.model.mapper.ItemPresentationMapper;
+import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
 import java.util.Collection;
 
 public class ItemsListPresenterImpl implements ItemsListPresenter {
@@ -11,13 +11,13 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
   ItemsListView view;
 
   private GetItemListUseCase getItemListUseCase;
-  private ItemPresentationMapper itemPresentationMapper;
+  private ItemModelMapper itemModelMapper;
 
   public ItemsListPresenterImpl(GetItemListUseCase getItemListUseCase,
-      ItemPresentationMapper itemPresentationMapper) {
+      ItemModelMapper itemModelMapper) {
 
     this.getItemListUseCase = getItemListUseCase;
-    this.itemPresentationMapper = itemPresentationMapper;
+    this.itemModelMapper = itemModelMapper;
   }
 
   @Override public void loadItemsList() {
@@ -36,7 +36,7 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
 
         @Override public void onItemListLoaded(Collection<Item> itemCollection) {
           Collection<ItemModel> itemModelCollection =
-              itemPresentationMapper.transform(itemCollection);
+              itemModelMapper.transform(itemCollection);
           showItemList(itemModelCollection);
         }
 

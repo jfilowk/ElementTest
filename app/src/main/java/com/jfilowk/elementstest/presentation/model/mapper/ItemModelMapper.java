@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.inject.Inject;
 
-public class ItemPresentationMapper {
+public class ItemModelMapper {
 
-  @Inject public ItemPresentationMapper() {
+  @Inject public ItemModelMapper() {
   }
 
   public ItemModel transform(Item item) {
