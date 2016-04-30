@@ -1,15 +1,15 @@
-package com.jfilowk.elementstest.presentation.model;
+package com.jfilowk.elementstest.data.entity;
 
-public class Item {
+public class ItemEntity {
 
   private String title;
   private String description;
   private String url;
 
-  public Item() {
+  public ItemEntity() {
   }
 
-  public Item(String title, String description, String url) {
+  public ItemEntity(String title, String description, String url) {
     this.title = title;
     this.description = description;
     this.url = url;
@@ -40,7 +40,7 @@ public class Item {
   }
 
   @Override public String toString() {
-    return "Item{" +
+    return "ItemEntity{" +
         "title='" + title + '\'' +
         ", description='" + description + '\'' +
         ", url='" + url + '\'' +

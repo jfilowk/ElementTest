@@ -1,15 +1,15 @@
-package com.jfilowk.elementstest.domain;
+package com.jfilowk.elementstest.presentation.model;
 
-public class Item {
+public class ItemModel {
 
   private String title;
   private String description;
   private String url;
 
-  public Item() {
+  public ItemModel() {
   }
 
-  public Item(String title, String description, String url) {
+  public ItemModel(String title, String description, String url) {
     this.title = title;
     this.description = description;
     this.url = url;
