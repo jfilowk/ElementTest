@@ -1,5 +1,6 @@
 package com.jfilowk.elementstest.data.network;
 
+import javax.inject.Inject;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 
@@ -11,7 +12,7 @@ public class ServiceGenerator {
 
   private final Retrofit retrofit;
 
-  public ServiceGenerator(String URL) {
+  @Inject public ServiceGenerator(String URL) {
     OkHttpClient okHttpClient = new OkHttpClient();
     // TODO: jackson https://github.com/FasterXML/jackson-dataformat-csv
     retrofit = new Retrofit.Builder().baseUrl(URL).client(okHttpClient).build();
