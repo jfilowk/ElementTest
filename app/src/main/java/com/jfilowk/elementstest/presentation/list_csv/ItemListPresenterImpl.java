@@ -10,15 +10,15 @@ import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
 import java.util.Collection;
 import javax.inject.Inject;
 
-public class ItemsListPresenterImpl implements ItemsListPresenter {
+public class ItemListPresenterImpl implements ItemListPresenter {
 
-  ItemsListView view;
+  ItemListView view;
 
   private Context context;
   private GetItemListUseCase getItemListUseCase;
   private ItemModelMapper itemModelMapper;
 
-  @Inject public ItemsListPresenterImpl(Context context, GetItemListUseCase getItemListUseCase,
+  @Inject public ItemListPresenterImpl(Context context, GetItemListUseCase getItemListUseCase,
       ItemModelMapper itemModelMapper) {
     this.context = context;
 
@@ -51,8 +51,8 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
       };
 
   private void showItemList(Collection<ItemModel> itemModelCollection) {
-    this.view.displayItemsList(itemModelCollection);
     this.view.hideLoading();
+    this.view.displayItemsList(itemModelCollection);
   }
 
   private void showError(ErrorBundle errorBundle) {
@@ -62,7 +62,7 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
     this.view.showRetry();
   }
 
-  @Override public void attachView(ItemsListView view) {
+  @Override public void attachView(ItemListView view) {
     this.view = view;
   }
 

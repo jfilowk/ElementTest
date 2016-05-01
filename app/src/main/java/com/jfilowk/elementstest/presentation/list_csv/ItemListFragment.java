@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseFragment;
 import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
@@ -23,9 +24,9 @@ import java.util.List;
 import javax.inject.Inject;
 import timber.log.Timber;
 
-public class ItemsListFragment extends BaseFragment implements ItemsListView {
+public class ItemListFragment extends BaseFragment implements ItemListView {
 
-  @Inject ItemsListPresenter presenter;
+  @Inject ItemListPresenter presenter;
 
   @BindView(R.id.rv_list_items) RecyclerView rvItemList;
   @BindView(R.id.rl_view_progress) RelativeLayout rlProgress;
@@ -58,7 +59,12 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
     this.presenter.attachView(this);
   }
 
+
   private void loadItemList() {
+    this.presenter.loadItemsList();
+  }
+
+  @OnClick(R.id.btn_retry) public void retry() {
     this.presenter.loadItemsList();
   }
 
@@ -68,7 +74,7 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
       if (adapter == null) {
         adapter = new ItemListAdapter(getActivity(), itemModelList);
       } else {
-        // TODO: actualizar
+        adapter.refreshList(itemModelList);
       }
       this.rvItemList.setAdapter(adapter);
     }

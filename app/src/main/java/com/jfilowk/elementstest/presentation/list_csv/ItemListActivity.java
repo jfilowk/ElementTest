@@ -8,7 +8,7 @@ import com.jfilowk.elementstest.presentation.internal.di.HasComponent;
 import com.jfilowk.elementstest.presentation.internal.di.components.DaggerItemComponent;
 import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
 
-public class ItemsListActivity extends BaseActivity implements HasComponent<ItemComponent> {
+public class ItemListActivity extends BaseActivity implements HasComponent<ItemComponent> {
 
   private ItemComponent itemComponent;
 

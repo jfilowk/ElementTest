@@ -11,7 +11,6 @@ public interface ItemRepository {
   interface ItemListCallack {
     void onItemListLoaded(Collection<Item> itemCollection);
 
-    // TODO: manage errors
     void onError(ErrorBundle repositoryErrorBundle);
   }
 }

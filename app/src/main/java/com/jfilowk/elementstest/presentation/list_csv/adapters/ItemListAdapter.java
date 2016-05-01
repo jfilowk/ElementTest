@@ -32,6 +32,12 @@ public class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     return new RowViewHolder(rowView, context);
   }
 
+  public void refreshList(List<ItemModel> itemModels) {
+    itemModelList.clear();
+    itemModelList.addAll(itemModels);
+    notifyDataSetChanged();
+  }
+
   @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ItemModel itemModel = itemModelList.get(position);
     ((RowViewHolder) holder).bindItemModel(itemModel);
