@@ -10,5 +10,5 @@ public interface LoadDataView {
 
   void hideRetry();
 
-  void showError();
+  void showError(String errorMessage);
 }

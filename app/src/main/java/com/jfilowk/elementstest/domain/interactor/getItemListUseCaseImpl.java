@@ -1,8 +1,9 @@
 package com.jfilowk.elementstest.domain.interactor;
 
 import com.jfilowk.elementstest.domain.Item;
-import com.jfilowk.elementstest.presentation.internal.MainThread;
+import com.jfilowk.elementstest.domain.exception.ErrorBundle;
 import com.jfilowk.elementstest.domain.repository.ItemRepository;
+import com.jfilowk.elementstest.presentation.internal.MainThread;
 import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 import javax.inject.Inject;
@@ -40,8 +41,8 @@ public class GetItemListUseCaseImpl implements GetItemListUseCase {
           notifyItemListLoaded(itemCollection);
         }
 
-        @Override public void onError() {
-          notifyError();
+        @Override public void onError(ErrorBundle errorBundle) {
+          notifyError(errorBundle);
         }
       };
 
@@ -49,7 +50,7 @@ public class GetItemListUseCaseImpl implements GetItemListUseCase {
     callback.onItemListLoaded(itemCollection);
   }
 
-  private void notifyError() {
-    callback.onError();
+  private void notifyError(ErrorBundle errorBundle) {
+    callback.onError(errorBundle);
   }
 }

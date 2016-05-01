@@ -43,9 +43,9 @@ import javax.inject.Singleton;
     return new ItemEntityCsvMapper();
   }
 
-  @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator,
-      ItemEntityCsvMapper itemEntityCsvMapper) {
-    return new ElementsService(serviceGenerator, itemEntityCsvMapper);
+  @Provides @Singleton ElementsService provideElementsService(Context context,
+      ServiceGenerator serviceGenerator, ItemEntityCsvMapper itemEntityCsvMapper) {
+    return new ElementsService(context, serviceGenerator, itemEntityCsvMapper);
   }
 
   @Provides @Singleton ItemRepository provideItemRepository(ItemDataRepository itemDataRepository) {

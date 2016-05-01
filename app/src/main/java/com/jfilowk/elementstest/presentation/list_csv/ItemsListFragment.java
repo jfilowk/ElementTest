@@ -91,7 +91,7 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
     rlRetry.setVisibility(View.GONE);
   }
 
-  @Override public void showError() {
+  @Override public void showError(String errorMessage) {
     // TODO: implement
   }
 }

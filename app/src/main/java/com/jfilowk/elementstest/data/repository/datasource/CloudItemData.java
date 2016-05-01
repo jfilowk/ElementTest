@@ -20,8 +20,8 @@ public class CloudItemData implements ItemData {
         entityListCallback.onItemListLoaded(result);
       }
 
-      @Override public void onError() {
-        entityListCallback.onError();
+      @Override public void onError(Exception e) {
+        entityListCallback.onError(e);
       }
     });
   }

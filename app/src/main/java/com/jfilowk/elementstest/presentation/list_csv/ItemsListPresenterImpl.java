@@ -1,6 +1,7 @@
 package com.jfilowk.elementstest.presentation.list_csv;
 
 import com.jfilowk.elementstest.domain.Item;
+import com.jfilowk.elementstest.domain.exception.ErrorBundle;
 import com.jfilowk.elementstest.domain.interactor.GetItemListUseCase;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
@@ -40,19 +41,18 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
           showItemList(itemModelCollection);
         }
 
-        @Override public void onError() {
-          showError();
+        @Override public void onError(ErrorBundle errorBundle) {
+          showError(errorBundle);
         }
       };
 
   private void showItemList(Collection<ItemModel> itemModelCollection) {
-
     this.view.displayItemsList(itemModelCollection);
     this.view.hideLoading();
   }
 
-  private void showError() {
-
+  private void showError(ErrorBundle errorBundle) {
+    this.view.showError(errorBundle.getErrorMessage());
     this.view.hideLoading();
     this.view.showRetry();
   }

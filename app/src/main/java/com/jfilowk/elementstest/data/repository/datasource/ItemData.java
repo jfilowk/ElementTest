@@ -8,7 +8,7 @@ public interface ItemData {
   interface ItemEntityListCallback {
     void onItemListLoaded(Collection<ItemEntity> itemEntityCollection);
 
-    void onError();
+    void onError(Exception e);
   }
 
   void getItemEntityList(ItemEntityListCallback entityListCallback);
