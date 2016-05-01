@@ -1,7 +1,10 @@
 package com.jfilowk.elementstest.data.network;
 
+import android.content.Context;
 import com.jfilowk.elementstest.data.entity.ItemEntity;
 import com.jfilowk.elementstest.data.entity.mapper.ItemEntityCsvMapper;
+import com.jfilowk.elementstest.data.exception.ItemException;
+import com.jfilowk.elementstest.data.exception.NetworkConnectionException;
 import com.opencsv.CSVReader;
 import java.io.IOException;
 import java.util.Collection;
@@ -16,12 +19,14 @@ import retrofit2.http.Streaming;
 
 public class ElementsService {
 
+  public static final String NO_CONNECTIVITY = "No connectivity";
   private ElementsServiceApi elementsServiceApi;
-
+  private Context context;
   private ItemEntityCsvMapper itemEntityCsvMapper;
 
-  @Inject public ElementsService(ServiceGenerator serviceGenerator,
+  @Inject public ElementsService(Context context, ServiceGenerator serviceGenerator,
       ItemEntityCsvMapper itemEntityCsvMapper) {
+    this.context = context;
     this.itemEntityCsvMapper = itemEntityCsvMapper;
     elementsServiceApi = serviceGenerator.createService(ElementsServiceApi.class);
   }
@@ -31,8 +36,6 @@ public class ElementsService {
 
     bodyCall.enqueue(new Callback<ResponseBody>() {
       @Override public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-        // TODO: CSV transform
-
         CSVReader reader = new CSVReader(response.body().charStream());
         try {
           List<String[]> listEntitiesCsv = reader.readAll();
@@ -41,13 +44,13 @@ public class ElementsService {
           collectionServiceCallback.onSuccess(itemEntityCollection);
           response.body().close();
         } catch (IOException e) {
-          collectionServiceCallback.onError();
+          collectionServiceCallback.onError(new ItemException(""));
           e.printStackTrace();
         }
       }
 
       @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
-        collectionServiceCallback.onError();
+        collectionServiceCallback.onError(new NetworkConnectionException(""));
       }
     });
   }

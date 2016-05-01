@@ -1,6 +1,7 @@
 package com.jfilowk.elementstest.domain.repository;
 
 import com.jfilowk.elementstest.domain.Item;
+import com.jfilowk.elementstest.domain.exception.ErrorBundle;
 import java.util.Collection;
 
 public interface ItemRepository {
@@ -11,6 +12,6 @@ public interface ItemRepository {
     void onItemListLoaded(Collection<Item> itemCollection);
 
     // TODO: manage errors
-    void onError();
+    void onError(ErrorBundle repositoryErrorBundle);
   }
 }

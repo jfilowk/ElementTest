@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +29,7 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
 
   @BindView(R.id.rv_list_items) RecyclerView rvItemList;
   @BindView(R.id.rl_view_progress) RelativeLayout rlProgress;
-  @BindView(R.id.rl_retry) RelativeLayout rlRetry;
+  @BindView(R.id.rl_retry) LinearLayout rlRetry;
   @BindView(R.id.btn_retry) Button btnRetry;
 
   private List<ItemModel> itemModelList;
@@ -91,7 +92,7 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
     rlRetry.setVisibility(View.GONE);
   }
 
-  @Override public void showError() {
-    // TODO: implement
+  @Override public void showError(String errorMessage) {
+    showToastMessage(errorMessage);
   }
 }
