@@ -58,6 +58,8 @@ public class ItemListFragment extends BaseFragment implements ItemListView {
     this.presenter.attachView(this);
   }
 
+  // TODO: implement retry :D
+
   private void loadItemList() {
     this.presenter.loadItemsList();
   }
