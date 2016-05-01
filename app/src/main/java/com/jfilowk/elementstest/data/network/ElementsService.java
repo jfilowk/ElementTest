@@ -39,6 +39,7 @@ public class ElementsService {
           Collection<ItemEntity> itemEntityCollection =
               itemEntityCsvMapper.transform(listEntitiesCsv);
           collectionServiceCallback.onSuccess(itemEntityCollection);
+          response.body().close();
         } catch (IOException e) {
           collectionServiceCallback.onError();
           e.printStackTrace();
