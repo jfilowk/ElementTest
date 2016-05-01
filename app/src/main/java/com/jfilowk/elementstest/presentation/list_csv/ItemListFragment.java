@@ -68,7 +68,7 @@ public class ItemListFragment extends BaseFragment implements ItemListView {
       if (adapter == null) {
         adapter = new ItemListAdapter(getActivity(), itemModelList);
       } else {
-        // TODO: actualizar
+        adapter.refreshList(itemModelList);
       }
       this.rvItemList.setAdapter(adapter);
     }

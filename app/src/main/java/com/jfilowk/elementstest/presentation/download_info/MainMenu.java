@@ -9,7 +9,6 @@ import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseActivity;
 import com.jfilowk.elementstest.presentation.list_csv.ItemListActivity;
-import timber.log.Timber;
 
 public class MainMenu extends BaseActivity {
 
@@ -23,8 +22,6 @@ public class MainMenu extends BaseActivity {
   }
 
   @OnClick(R.id.btn_show_me) public void navigateToList() {
-    // TODO: create Intents guays
-    Timber.d("Pulsado");
     Intent intent = new Intent(this, ItemListActivity.class);
     startActivity(intent);
   }
