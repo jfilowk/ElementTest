@@ -57,11 +57,13 @@ public class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void bindItemModel(ItemModel itemModel) {
       txtTitle.setText(itemModel.getTitle());
       txtDescription.setText(itemModel.getDescription());
-      Picasso.with(context)
-          .load(itemModel.getUrl())
-          .placeholder(R.drawable.notfound)
-          .error(R.drawable.notfound)
-          .into(imgItem);
+      if (!itemModel.getUrl().equals("")) {
+        Picasso.with(context)
+            .load(itemModel.getUrl())
+            .placeholder(R.drawable.notfound)
+            .error(R.drawable.notfound)
+            .into(imgItem);
+      }
     }
   }
 }
