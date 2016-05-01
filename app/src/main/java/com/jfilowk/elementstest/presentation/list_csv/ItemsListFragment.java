@@ -53,8 +53,9 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
   }
 
   @Override public void displayItemsList(Collection<ItemModel> itemModelCollection) {
-    Timber.e("display");
-    System.out.println(itemModelCollection.size());
+    for (ItemModel itemModel : itemModelCollection) {
+      Timber.e(itemModel.toString());
+    }
   }
 
   @Override public void showLoading() {

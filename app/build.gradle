@@ -39,4 +39,8 @@ dependencies {
   apt 'com.google.dagger:dagger-compiler:2.4'
   compile 'com.google.dagger:dagger:2.4'
   provided 'javax.annotation:jsr250-api:1.0'
+
+  compile 'com.opencsv:opencsv:3.7'
+  compile 'org.apache.commons:commons-lang3:3.4'
+
 }

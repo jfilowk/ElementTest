@@ -2,6 +2,7 @@ package com.jfilowk.elementstest.presentation.internal.di.modules;
 
 import android.content.Context;
 import com.jfilowk.elementstest.ElementTest;
+import com.jfilowk.elementstest.data.entity.mapper.ItemEntityCsvMapper;
 import com.jfilowk.elementstest.data.network.ElementsService;
 import com.jfilowk.elementstest.data.network.ServiceGenerator;
 import com.jfilowk.elementstest.data.repository.ItemDataRepository;
@@ -35,12 +36,16 @@ import javax.inject.Singleton;
   }
 
   @Provides @Singleton ServiceGenerator provideServiceGenerator() {
-    return new ServiceGenerator(
-        "https://docs.google.com/spreadsheet/");
+    return new ServiceGenerator("https://docs.google.com/spreadsheet/");
   }
 
-  @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator) {
-    return new ElementsService(serviceGenerator);
+  @Provides @Singleton ItemEntityCsvMapper provideItemEntityCsvMapper() {
+    return new ItemEntityCsvMapper();
+  }
+
+  @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator,
+      ItemEntityCsvMapper itemEntityCsvMapper) {
+    return new ElementsService(serviceGenerator, itemEntityCsvMapper);
   }
 
   @Provides @Singleton ItemRepository provideItemRepository(ItemDataRepository itemDataRepository) {

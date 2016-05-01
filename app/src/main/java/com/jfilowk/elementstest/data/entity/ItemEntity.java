@@ -1,9 +1,14 @@
 package com.jfilowk.elementstest.data.entity;
 
+import com.opencsv.bean.CsvBind;
+
 public class ItemEntity {
 
+  @CsvBind
   private String title;
+  @CsvBind
   private String description;
+  @CsvBind
   private String url;
 
   public ItemEntity() {

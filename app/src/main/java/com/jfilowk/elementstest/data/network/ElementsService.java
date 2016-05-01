@@ -1,7 +1,9 @@
 package com.jfilowk.elementstest.data.network;
 
 import com.jfilowk.elementstest.data.entity.ItemEntity;
-import java.util.Arrays;
+import com.jfilowk.elementstest.data.entity.mapper.ItemEntityCsvMapper;
+import com.opencsv.CSVReader;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
@@ -10,22 +12,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import retrofit2.http.Streaming;
 
 public class ElementsService {
 
   private ElementsServiceApi elementsServiceApi;
 
-  private static final List<ItemEntity> ITEM_ENTITIES =
-      Arrays.asList(new ItemEntity("Item1", "Descripcion1", "Url1"),
-          new ItemEntity("Item2", "Descripcion2", "Url2"),
-          new ItemEntity("Item3", "Descripcion3", "Url3"),
-          new ItemEntity("Item4", "Descripcion4", "Url4"),
-          new ItemEntity("Item5", "Descripcion5", "Url5"),
-          new ItemEntity("Item6", "Descripcion6", "Url6"),
-          new ItemEntity("Item7", "Descripcion7", "Url7"),
-          new ItemEntity("Item8", "Descripcion8", "Url8"));
+  private ItemEntityCsvMapper itemEntityCsvMapper;
 
-  @Inject public ElementsService(ServiceGenerator serviceGenerator) {
+  @Inject public ElementsService(ServiceGenerator serviceGenerator,
+      ItemEntityCsvMapper itemEntityCsvMapper) {
+    this.itemEntityCsvMapper = itemEntityCsvMapper;
     elementsServiceApi = serviceGenerator.createService(ElementsServiceApi.class);
   }
 
@@ -35,8 +32,17 @@ public class ElementsService {
     bodyCall.enqueue(new Callback<ResponseBody>() {
       @Override public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
         // TODO: CSV transform
-        //Timber.e(response.body().string());
-        collectionServiceCallback.onSuccess(ITEM_ENTITIES);
+
+        CSVReader reader = new CSVReader(response.body().charStream());
+        try {
+          List<String[]> listEntitiesCsv = reader.readAll();
+          Collection<ItemEntity> itemEntityCollection =
+              itemEntityCsvMapper.transform(listEntitiesCsv);
+          collectionServiceCallback.onSuccess(itemEntityCollection);
+        } catch (IOException e) {
+          collectionServiceCallback.onError();
+          e.printStackTrace();
+        }
       }
 
       @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
@@ -46,6 +52,7 @@ public class ElementsService {
   }
 
   public interface ElementsServiceApi {
+    @Streaming
     @GET("ccc?key=0Aqg9JQbnOwBwdEZFN2JKeldGZGFzUWVrNDBsczZxLUE&single=true&gid=0&output=csv")
     Call<ResponseBody> getItems();
   }
