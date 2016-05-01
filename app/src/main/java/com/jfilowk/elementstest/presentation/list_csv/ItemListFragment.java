@@ -23,9 +23,9 @@ import java.util.List;
 import javax.inject.Inject;
 import timber.log.Timber;
 
-public class ItemsListFragment extends BaseFragment implements ItemsListView {
+public class ItemListFragment extends BaseFragment implements ItemListView {
 
-  @Inject ItemsListPresenter presenter;
+  @Inject ItemListPresenter presenter;
 
   @BindView(R.id.rv_list_items) RecyclerView rvItemList;
   @BindView(R.id.rl_view_progress) RelativeLayout rlProgress;
