@@ -2,10 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jfilowk.elementstest">
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
+      android:name=".ElementTest"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <activity android:name=".presentation.download_info.MainMenu">
@@ -15,6 +18,7 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
+    <activity android:name=".presentation.list_csv.ItemsListActivity"/>
   </application>
 
 </manifest>

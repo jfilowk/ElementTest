@@ -5,6 +5,7 @@ import com.jfilowk.elementstest.domain.interactor.GetItemListUseCase;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
 import java.util.Collection;
+import javax.inject.Inject;
 
 public class ItemsListPresenterImpl implements ItemsListPresenter {
 
@@ -13,7 +14,7 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
   private GetItemListUseCase getItemListUseCase;
   private ItemModelMapper itemModelMapper;
 
-  public ItemsListPresenterImpl(GetItemListUseCase getItemListUseCase,
+  @Inject public ItemsListPresenterImpl(GetItemListUseCase getItemListUseCase,
       ItemModelMapper itemModelMapper) {
 
     this.getItemListUseCase = getItemListUseCase;
@@ -35,8 +36,7 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
       new GetItemListUseCase.ItemListCallback() {
 
         @Override public void onItemListLoaded(Collection<Item> itemCollection) {
-          Collection<ItemModel> itemModelCollection =
-              itemModelMapper.transform(itemCollection);
+          Collection<ItemModel> itemModelCollection = itemModelMapper.transform(itemCollection);
           showItemList(itemModelCollection);
         }
 

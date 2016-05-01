@@ -2,6 +2,10 @@ package com.jfilowk.elementstest.presentation.internal.di.modules;
 
 import android.content.Context;
 import com.jfilowk.elementstest.ElementTest;
+import com.jfilowk.elementstest.data.network.ElementsService;
+import com.jfilowk.elementstest.data.network.ServiceGenerator;
+import com.jfilowk.elementstest.data.repository.ItemDataRepository;
+import com.jfilowk.elementstest.domain.repository.ItemRepository;
 import com.jfilowk.elementstest.presentation.internal.MainThread;
 import com.jfilowk.elementstest.presentation.internal.MainThreadImpl;
 import dagger.Module;
@@ -30,4 +34,16 @@ import javax.inject.Singleton;
     return mainThread;
   }
 
+  @Provides @Singleton ServiceGenerator provideServiceGenerator() {
+    return new ServiceGenerator(
+        "https://docs.google.com/spreadsheet/");
+  }
+
+  @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator) {
+    return new ElementsService(serviceGenerator);
+  }
+
+  @Provides @Singleton ItemRepository provideItemRepository(ItemDataRepository itemDataRepository) {
+    return itemDataRepository;
+  }
 }
