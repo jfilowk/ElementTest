@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseFragment;
 import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
@@ -58,9 +59,12 @@ public class ItemListFragment extends BaseFragment implements ItemListView {
     this.presenter.attachView(this);
   }
 
-  // TODO: implement retry :D
 
   private void loadItemList() {
+    this.presenter.loadItemsList();
+  }
+
+  @OnClick(R.id.btn_retry) public void retry() {
     this.presenter.loadItemsList();
   }
 
