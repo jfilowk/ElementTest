@@ -1,8 +1,10 @@
 package com.jfilowk.elementstest.presentation.list_csv;
 
+import android.content.Context;
 import com.jfilowk.elementstest.domain.Item;
 import com.jfilowk.elementstest.domain.exception.ErrorBundle;
 import com.jfilowk.elementstest.domain.interactor.GetItemListUseCase;
+import com.jfilowk.elementstest.presentation.internal.exception.ErrorMessageFactory;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
 import java.util.Collection;
@@ -12,11 +14,13 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
 
   ItemsListView view;
 
+  private Context context;
   private GetItemListUseCase getItemListUseCase;
   private ItemModelMapper itemModelMapper;
 
-  @Inject public ItemsListPresenterImpl(GetItemListUseCase getItemListUseCase,
+  @Inject public ItemsListPresenterImpl(Context context, GetItemListUseCase getItemListUseCase,
       ItemModelMapper itemModelMapper) {
+    this.context = context;
 
     this.getItemListUseCase = getItemListUseCase;
     this.itemModelMapper = itemModelMapper;
@@ -52,7 +56,8 @@ public class ItemsListPresenterImpl implements ItemsListPresenter {
   }
 
   private void showError(ErrorBundle errorBundle) {
-    this.view.showError(errorBundle.getErrorMessage());
+    String errorMessage = ErrorMessageFactory.create(context, errorBundle.getException());
+    this.view.showError(errorMessage);
     this.view.hideLoading();
     this.view.showRetry();
   }

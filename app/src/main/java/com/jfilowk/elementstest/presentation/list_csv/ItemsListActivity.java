@@ -2,7 +2,6 @@ package com.jfilowk.elementstest.presentation.list_csv;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Window;
 import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseActivity;
 import com.jfilowk.elementstest.presentation.internal.di.HasComponent;
@@ -15,7 +14,6 @@ public class ItemsListActivity extends BaseActivity implements HasComponent<Item
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
     setContentView(R.layout.activity_list_items);
 
     this.initializeInjector();

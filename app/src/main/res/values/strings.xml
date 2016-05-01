@@ -6,4 +6,7 @@
   <string name="item_1">Item 1</string>
   <string name="description_1">Description 1</string>
   <string name="an_error_occurred">An error occurred</string>
+  <string name="something_broken">Something is broken</string>
+  <string name="check_connectivity">Check your connectivity</string>
+  <string name="elements_server">Elements servers are crazy, try again later</string>
 </resources>

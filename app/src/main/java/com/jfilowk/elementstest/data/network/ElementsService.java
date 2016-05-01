@@ -1,8 +1,6 @@
 package com.jfilowk.elementstest.data.network;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import com.jfilowk.elementstest.data.entity.ItemEntity;
 import com.jfilowk.elementstest.data.entity.mapper.ItemEntityCsvMapper;
 import com.jfilowk.elementstest.data.exception.ItemException;
@@ -34,11 +32,6 @@ public class ElementsService {
   }
 
   public void getItems(final ServiceCallback<Collection<ItemEntity>> collectionServiceCallback) {
-    // TODO: improve
-    if (!isThereInternetConnection()) {
-      collectionServiceCallback.onError(new NetworkConnectionException(NO_CONNECTIVITY));
-      return;
-    }
     Call<ResponseBody> bodyCall = elementsServiceApi.getItems();
 
     bodyCall.enqueue(new Callback<ResponseBody>() {
@@ -66,17 +59,6 @@ public class ElementsService {
     @Streaming
     @GET("ccc?key=0Aqg9JQbnOwBwdEZFN2JKeldGZGFzUWVrNDBsczZxLUE&single=true&gid=0&output=csv")
     Call<ResponseBody> getItems();
-  }
-
-  private boolean isThereInternetConnection() {
-    boolean isConnected;
-
-    ConnectivityManager connectivityManager =
-        (ConnectivityManager) this.context.getSystemService(Context.CONNECTIVITY_SERVICE);
-    NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-    isConnected = (networkInfo != null && networkInfo.isConnectedOrConnecting());
-
-    return isConnected;
   }
 }
 
