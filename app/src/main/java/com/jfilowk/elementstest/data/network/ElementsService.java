@@ -1,7 +1,6 @@
 package com.jfilowk.elementstest.data.network;
 
 import com.jfilowk.elementstest.data.entity.ItemEntity;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +10,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
-import timber.log.Timber;
 
 public class ElementsService {
 
@@ -37,11 +35,7 @@ public class ElementsService {
     bodyCall.enqueue(new Callback<ResponseBody>() {
       @Override public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
         // TODO: CSV transform
-        try {
-          Timber.e(response.body().string());
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
+        //Timber.e(response.body().string());
         collectionServiceCallback.onSuccess(ITEM_ENTITIES);
       }
 
