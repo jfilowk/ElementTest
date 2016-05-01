@@ -14,8 +14,6 @@ public class GetItemListUseCaseImpl implements GetItemListUseCase {
 
   private ItemListCallback callback;
 
-  // TODO: inject repository, mainthread, executor
-
   @Inject public GetItemListUseCaseImpl(ItemRepository itemRepository, ExecutorService executor,
       MainThread mainThread) {
     this.itemRepository = itemRepository;
