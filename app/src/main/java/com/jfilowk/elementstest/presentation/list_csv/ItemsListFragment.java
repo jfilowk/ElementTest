@@ -71,10 +71,6 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
       }
       this.rvItemList.setAdapter(adapter);
     }
-
-    for (ItemModel itemModel : itemModelCollection) {
-      Timber.e(itemModel.toString());
-    }
   }
 
   @Override public void showLoading() {

@@ -2,6 +2,7 @@ package com.jfilowk.elementstest.presentation.list_csv.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,15 +56,34 @@ public class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public void bindItemModel(ItemModel itemModel) {
-      txtTitle.setText(itemModel.getTitle());
-      txtDescription.setText(itemModel.getDescription());
+      txtTitle.setText(checkStyleString(itemModel.getTitle(), 20));
+      txtDescription.setText(checkStyleString(itemModel.getDescription(), 30));
       if (!itemModel.getUrl().equals("")) {
         Picasso.with(context)
             .load(itemModel.getUrl())
+            .fit()
             .placeholder(R.drawable.notfound)
             .error(R.drawable.notfound)
             .into(imgItem);
       }
     }
+  }
+
+  public static String checkStyleString(String string, int maxLength) {
+    string = maxLengthSring(string, maxLength);
+    string = escapeHtml(string);
+    return string;
+  }
+
+  public static String maxLengthSring(String string, int maxLength) {
+    if (string.length() > maxLength) {
+      string = String.format("%s...", string.substring(0, maxLength));
+    }
+    return string;
+  }
+
+  public static String escapeHtml(String string) {
+    string = Html.fromHtml(string).toString();
+    return string;
   }
 }

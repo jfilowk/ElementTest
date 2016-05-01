@@ -5,4 +5,5 @@
   <string name="_404">404</string>
   <string name="item_1">Item 1</string>
   <string name="description_1">Description 1</string>
+  <string name="an_error_occurred">An error occurred</string>
 </resources>

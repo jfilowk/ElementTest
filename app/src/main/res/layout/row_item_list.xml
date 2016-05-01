@@ -8,8 +8,8 @@
 
   <ImageView
       android:id="@+id/img_item"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="64dp"
+      android:layout_height="64dp"
       android:contentDescription="@string/_404"
       android:paddingLeft="8dp"
       android:paddingRight="8dp"
