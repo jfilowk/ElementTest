@@ -2,29 +2,38 @@ package com.jfilowk.elementstest.presentation.list_csv;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Window;
+import com.jfilowk.elementstest.R;
 import com.jfilowk.elementstest.base.BaseActivity;
-import com.jfilowk.elementstest.presentation.internal.di.components.ActivityComponent;
-import com.jfilowk.elementstest.presentation.internal.di.components.DaggerActivityComponent;
+import com.jfilowk.elementstest.presentation.internal.di.HasComponent;
+import com.jfilowk.elementstest.presentation.internal.di.components.DaggerItemComponent;
+import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
 
-public class ItemsListActivity extends BaseActivity {
+public class ItemsListActivity extends BaseActivity implements HasComponent<ItemComponent> {
 
-  private ActivityComponent activityComponent;
+  private ItemComponent itemComponent;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+    setContentView(R.layout.activity_list_items);
 
-    initializeInjector();
+    this.initializeInjector();
   }
 
   private void initializeInjector() {
 
-    if (activityComponent == null) {
-      activityComponent = DaggerActivityComponent.builder()
+    if (itemComponent == null) {
+      itemComponent = DaggerItemComponent.builder()
           .applicationComponent(getApplicationComponent())
           .activityModule(getActivityModule())
           .build();
     }
 
-    activityComponent.inject(this);
+    itemComponent.inject(this);
+  }
+
+  @Override public ItemComponent getComponent() {
+    return itemComponent;
   }
 }

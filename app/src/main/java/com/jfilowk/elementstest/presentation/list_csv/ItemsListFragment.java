@@ -16,6 +16,7 @@ import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponen
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import java.util.Collection;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 public class ItemsListFragment extends BaseFragment implements ItemsListView {
 
@@ -52,14 +53,17 @@ public class ItemsListFragment extends BaseFragment implements ItemsListView {
   }
 
   @Override public void displayItemsList(Collection<ItemModel> itemModelCollection) {
-
+    Timber.e("display");
+    System.out.println(itemModelCollection.size());
   }
 
   @Override public void showLoading() {
+    Timber.e("showLoading");
     rlProgress.setVisibility(View.VISIBLE);
   }
 
   @Override public void hideLoading() {
+    Timber.e("hideLoading");
     rlProgress.setVisibility(View.GONE);
   }
 

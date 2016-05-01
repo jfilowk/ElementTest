@@ -9,6 +9,7 @@ import com.jfilowk.elementstest.domain.repository.ItemRepository;
 import java.util.Collection;
 import java.util.List;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 public class ItemDataRepository implements ItemRepository {
 
@@ -21,6 +22,7 @@ public class ItemDataRepository implements ItemRepository {
   }
 
   @Override public void getItemList(final ItemListCallack itemListCallack) {
+    Timber.e("showLoading2");
     cloudItemData.getItemEntityList(new ItemData.ItemEntityListCallback() {
       @Override public void onItemListLoaded(Collection<ItemEntity> itemEntityCollection) {
         List<Item> list = (List<Item>) mapper.transform(itemEntityCollection);

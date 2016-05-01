@@ -36,7 +36,7 @@ import javax.inject.Singleton;
 
   @Provides @Singleton ServiceGenerator provideServiceGenerator() {
     return new ServiceGenerator(
-        "https://docs.google.com/spreadsheet/ccc?key=0Aqg9JQbnOwBwdEZFN2JKeldGZGFzUWVrNDBsczZxLUE&single=true&gid=0&output=csv");
+        "https://docs.google.com/spreadsheet/");
   }
 
   @Provides @Singleton ElementsService provideElementsService(ServiceGenerator serviceGenerator) {

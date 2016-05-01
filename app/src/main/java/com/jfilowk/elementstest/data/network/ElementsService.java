@@ -1,6 +1,7 @@
 package com.jfilowk.elementstest.data.network;
 
 import com.jfilowk.elementstest.data.entity.ItemEntity;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -10,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import timber.log.Timber;
 
 public class ElementsService {
 
@@ -17,16 +19,15 @@ public class ElementsService {
 
   private static final List<ItemEntity> ITEM_ENTITIES =
       Arrays.asList(new ItemEntity("Item1", "Descripcion1", "Url1"),
-          new ItemEntity("Item1", "Descripcion1", "Url1"),
           new ItemEntity("Item2", "Descripcion2", "Url2"),
           new ItemEntity("Item3", "Descripcion3", "Url3"),
           new ItemEntity("Item4", "Descripcion4", "Url4"),
           new ItemEntity("Item5", "Descripcion5", "Url5"),
           new ItemEntity("Item6", "Descripcion6", "Url6"),
-          new ItemEntity("Item7", "Descripcion7", "Url7"));
+          new ItemEntity("Item7", "Descripcion7", "Url7"),
+          new ItemEntity("Item8", "Descripcion8", "Url8"));
 
-  @Inject
-  public ElementsService(ServiceGenerator serviceGenerator) {
+  @Inject public ElementsService(ServiceGenerator serviceGenerator) {
     elementsServiceApi = serviceGenerator.createService(ElementsServiceApi.class);
   }
 
@@ -36,6 +37,11 @@ public class ElementsService {
     bodyCall.enqueue(new Callback<ResponseBody>() {
       @Override public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
         // TODO: CSV transform
+        try {
+          Timber.e(response.body().string());
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
         collectionServiceCallback.onSuccess(ITEM_ENTITIES);
       }
 
@@ -46,7 +52,8 @@ public class ElementsService {
   }
 
   public interface ElementsServiceApi {
-    @GET("/") Call<ResponseBody> getItems();
+    @GET("ccc?key=0Aqg9JQbnOwBwdEZFN2JKeldGZGFzUWVrNDBsczZxLUE&single=true&gid=0&output=csv")
+    Call<ResponseBody> getItems();
   }
 }
 
