@@ -6,5 +6,7 @@ import java.util.Collection;
 
 public interface ItemCache {
 
-  void obtainListDeviceApplicationEntity(CallbackGeneric<Collection<ItemEntity>> callback);
+  boolean insertItemListEntity(Collection<ItemEntity> itemEntityCollection);
+
+  void obtainItemListEntity(CallbackGeneric<Collection<ItemEntity>> callback);
 }

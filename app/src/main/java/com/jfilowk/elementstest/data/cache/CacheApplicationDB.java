@@ -11,10 +11,10 @@ public class CacheApplicationDB extends SQLiteOpenHelper {
   public static final String ITEMS_TABLE = "items";
 
   public static final String ID = "id";
-  public static final String TITLE = "package_name";
-  public static final String DESCRIPTION = "apk_size";
-  public static final String URL = "cache_size";
-  public static final String EXPIRES = "data_size";
+  public static final String TITLE = "title";
+  public static final String DESCRIPTION = "description";
+  public static final String URL = "url";
+  public static final String EXPIRES = "expires";
   public static final String CREATED_AT = "created_at";
 
   private static final int DB_VERSION = 1;
