@@ -8,7 +8,7 @@ import dagger.Component;
 
 @PerActivity @Component(dependencies = ApplicationComponent.class, modules = {
     ActivityModule.class, ItemModule.class
-}) public interface ItemComponent {
+}) public interface ItemComponent extends ActivityComponent {
 
   void inject(ItemsListFragment itemsListFragment);
 }

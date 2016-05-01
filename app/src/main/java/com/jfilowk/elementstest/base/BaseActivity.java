@@ -14,7 +14,7 @@ public class BaseActivity extends AppCompatActivity {
   }
 
   public ApplicationComponent getApplicationComponent() {
-    return ((ElementTest) getApplication()).getApplicationComponent();
+    return ((ElementTest) getApplication()).getApplicationComponent() ;
   }
 
   public ActivityModule getActivityModule() {

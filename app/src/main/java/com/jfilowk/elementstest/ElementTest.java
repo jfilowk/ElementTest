@@ -38,6 +38,6 @@ public class ElementTest extends Application {
   }
 
   public ApplicationComponent getApplicationComponent() {
-    return this.component;
+    return component;
   }
 }
