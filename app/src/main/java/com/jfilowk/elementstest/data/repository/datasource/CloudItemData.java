@@ -1,8 +1,8 @@
 package com.jfilowk.elementstest.data.repository.datasource;
 
 import com.jfilowk.elementstest.data.entity.ItemEntity;
-import com.jfilowk.elementstest.data.network.ElementsService;
 import com.jfilowk.elementstest.data.network.CallbackGeneric;
+import com.jfilowk.elementstest.data.network.ElementsService;
 import java.util.Collection;
 import javax.inject.Inject;
 

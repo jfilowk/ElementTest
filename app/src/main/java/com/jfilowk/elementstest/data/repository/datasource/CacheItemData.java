@@ -5,11 +5,13 @@ import com.jfilowk.elementstest.data.entity.ItemEntity;
 import com.jfilowk.elementstest.data.exception.NetworkConnectionException;
 import com.jfilowk.elementstest.data.network.CallbackGeneric;
 import java.util.Collection;
+import javax.inject.Inject;
 
 public class CacheItemData implements ItemData {
 
   private ItemCache itemCache;
 
+  @Inject
   public CacheItemData(ItemCache itemCache) {
     this.itemCache = itemCache;
   }

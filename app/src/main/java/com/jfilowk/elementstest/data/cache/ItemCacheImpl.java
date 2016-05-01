@@ -9,11 +9,13 @@ import com.jfilowk.elementstest.data.entity.ItemEntity;
 import com.jfilowk.elementstest.data.entity.mapper.ItemEntityMapper;
 import com.jfilowk.elementstest.data.network.CallbackGeneric;
 import java.util.Collection;
+import javax.inject.Inject;
 
 public class ItemCacheImpl extends CacheApplicationDB implements ItemCache {
 
   private ItemEntityMapper itemEntityMapper;
 
+  @Inject
   public ItemCacheImpl(Context context, ItemEntityMapper itemEntityMapper) {
     super(context);
     this.itemEntityMapper = itemEntityMapper;

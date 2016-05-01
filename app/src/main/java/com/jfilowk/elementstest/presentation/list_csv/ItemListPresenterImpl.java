@@ -51,8 +51,8 @@ public class ItemListPresenterImpl implements ItemListPresenter {
       };
 
   private void showItemList(Collection<ItemModel> itemModelCollection) {
-    this.view.displayItemsList(itemModelCollection);
     this.view.hideLoading();
+    this.view.displayItemsList(itemModelCollection);
   }
 
   private void showError(ErrorBundle errorBundle) {

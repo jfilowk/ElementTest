@@ -2,6 +2,8 @@ package com.jfilowk.elementstest.presentation.internal.di.modules;
 
 import android.content.Context;
 import com.jfilowk.elementstest.ElementTest;
+import com.jfilowk.elementstest.data.cache.ItemCache;
+import com.jfilowk.elementstest.data.cache.ItemCacheImpl;
 import com.jfilowk.elementstest.data.entity.mapper.ItemEntityCsvMapper;
 import com.jfilowk.elementstest.data.network.ElementsService;
 import com.jfilowk.elementstest.data.network.ServiceGenerator;
@@ -46,6 +48,10 @@ import javax.inject.Singleton;
   @Provides @Singleton ElementsService provideElementsService(Context context,
       ServiceGenerator serviceGenerator, ItemEntityCsvMapper itemEntityCsvMapper) {
     return new ElementsService(context, serviceGenerator, itemEntityCsvMapper);
+  }
+
+  @Provides @Singleton ItemCache provideItemCache(ItemCacheImpl itemCache) {
+    return itemCache;
   }
 
   @Provides @Singleton ItemRepository provideItemRepository(ItemDataRepository itemDataRepository) {
