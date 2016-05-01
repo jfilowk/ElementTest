@@ -31,7 +31,7 @@ public class ElementsService {
     elementsServiceApi = serviceGenerator.createService(ElementsServiceApi.class);
   }
 
-  public void getItems(final ServiceCallback<Collection<ItemEntity>> collectionServiceCallback) {
+  public void getItems(final CallbackGeneric<Collection<ItemEntity>> collectionCallbackGeneric) {
     Call<ResponseBody> bodyCall = elementsServiceApi.getItems();
 
     bodyCall.enqueue(new Callback<ResponseBody>() {
@@ -41,16 +41,16 @@ public class ElementsService {
           List<String[]> listEntitiesCsv = reader.readAll();
           Collection<ItemEntity> itemEntityCollection =
               itemEntityCsvMapper.transform(listEntitiesCsv);
-          collectionServiceCallback.onSuccess(itemEntityCollection);
+          collectionCallbackGeneric.onSuccess(itemEntityCollection);
           response.body().close();
         } catch (IOException e) {
-          collectionServiceCallback.onError(new ItemException(""));
+          collectionCallbackGeneric.onError(new ItemException(""));
           e.printStackTrace();
         }
       }
 
       @Override public void onFailure(Call<ResponseBody> call, Throwable t) {
-        collectionServiceCallback.onError(new NetworkConnectionException(""));
+        collectionCallbackGeneric.onError(new NetworkConnectionException(""));
       }
     });
   }
