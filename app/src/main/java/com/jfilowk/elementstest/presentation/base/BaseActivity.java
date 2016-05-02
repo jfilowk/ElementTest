@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.base;
+package com.jfilowk.elementstest.presentation.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ public class BaseActivity extends AppCompatActivity {
   }
 
   public ApplicationComponent getApplicationComponent() {
-    return ((ElementTest) getApplication()).getApplicationComponent() ;
+    return ((ElementTest) getApplication()).getApplicationComponent();
   }
 
   public ActivityModule getActivityModule() {

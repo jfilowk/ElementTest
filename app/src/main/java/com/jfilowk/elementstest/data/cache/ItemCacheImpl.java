@@ -15,8 +15,7 @@ public class ItemCacheImpl extends CacheApplicationDB implements ItemCache {
 
   private ItemEntityMapper itemEntityMapper;
 
-  @Inject
-  public ItemCacheImpl(Context context, ItemEntityMapper itemEntityMapper) {
+  @Inject public ItemCacheImpl(Context context, ItemEntityMapper itemEntityMapper) {
     super(context);
     this.itemEntityMapper = itemEntityMapper;
   }

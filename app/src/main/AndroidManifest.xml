@@ -11,7 +11,7 @@
       android:name=".ElementTest"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".presentation.download_info.MainMenu">
+    <activity android:name=".presentation.main_menu.MainMenu">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

@@ -1,7 +1,7 @@
 package com.jfilowk.elementstest.presentation.internal.di.components;
 
 import android.app.Activity;
-import com.jfilowk.elementstest.base.BaseActivity;
+import com.jfilowk.elementstest.presentation.base.BaseActivity;
 import com.jfilowk.elementstest.presentation.internal.di.PerActivity;
 import com.jfilowk.elementstest.presentation.internal.di.modules.ActivityModule;
 import dagger.Component;

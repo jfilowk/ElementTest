@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.presentation.download_info;
+package com.jfilowk.elementstest.presentation.main_menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
-import com.jfilowk.elementstest.base.BaseActivity;
+import com.jfilowk.elementstest.presentation.base.BaseActivity;
 import com.jfilowk.elementstest.presentation.list_csv.ItemListActivity;
 
 public class MainMenu extends BaseActivity {

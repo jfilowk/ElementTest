@@ -6,11 +6,11 @@ import java.util.Collection;
 
 public interface GetItemListUseCase extends Interactor {
 
+  void execute(ItemListCallback callback);
+
   interface ItemListCallback {
     void onItemListLoaded(Collection<Item> itemCollection);
 
     void onError(ErrorBundle errorBundle);
   }
-
-  void execute(ItemListCallback callback);
 }

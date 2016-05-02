@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.presentation.internal;
+package com.jfilowk.elementstest.domain;
 
 public interface MainThread {
 

@@ -16,12 +16,7 @@ public class CacheApplicationDB extends SQLiteOpenHelper {
   public static final String URL = "url";
   public static final String EXPIRES = "expires";
   public static final String CREATED_AT = "created_at";
-
-  private static final int DB_VERSION = 1;
-
-  public static final String DELETE_TABLE_APPLICATION =
-      "DELETE TABLE IF EXISTS " + ITEMS_TABLE;
-
+  public static final String DELETE_TABLE_APPLICATION = "DELETE TABLE IF EXISTS " + ITEMS_TABLE;
   public static final String CREATE_TABLE_APPLICATIONS = "CREATE TABLE "
       + ITEMS_TABLE
       + "("
@@ -37,10 +32,14 @@ public class CacheApplicationDB extends SQLiteOpenHelper {
       + " INTEGER, "
       + CREATED_AT
       + " DATETIME DEFAULT CURRENT_TIMESTAMP);";
-
+  private static final int DB_VERSION = 1;
 
   public CacheApplicationDB(Context context) {
     super(context, DATABASE_NAME, null, DB_VERSION);
+  }
+
+  public static void deleteDataTable(SQLiteDatabase db, String nameTable) {
+    db.execSQL("DELETE FROM " + nameTable);
   }
 
   @Override public void onCreate(SQLiteDatabase db) {
@@ -50,9 +49,5 @@ public class CacheApplicationDB extends SQLiteOpenHelper {
   @Override public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     db.execSQL(DELETE_TABLE_APPLICATION);
     onCreate(db);
-  }
-
-  public static void deleteDataTable(SQLiteDatabase db, String nameTable) {
-    db.execSQL("DELETE FROM " + nameTable);
   }
 }

@@ -14,8 +14,7 @@ public class ItemEntityMapper {
   public static final int COLUMN_DESCRIPTION = 2;
   public static final int COLUMN_URL = 3;
 
-  @Inject
-  public ItemEntityMapper() {
+  @Inject public ItemEntityMapper() {
   }
 
   public Item transform(ItemEntity itemEntity) {

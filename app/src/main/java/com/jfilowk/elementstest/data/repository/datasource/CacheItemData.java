@@ -11,8 +11,7 @@ public class CacheItemData implements ItemData {
 
   private ItemCache itemCache;
 
-  @Inject
-  public CacheItemData(ItemCache itemCache) {
+  @Inject public CacheItemData(ItemCache itemCache) {
     this.itemCache = itemCache;
   }
 

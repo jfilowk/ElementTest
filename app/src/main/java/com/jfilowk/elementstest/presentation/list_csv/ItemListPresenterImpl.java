@@ -4,7 +4,8 @@ import android.content.Context;
 import com.jfilowk.elementstest.domain.Item;
 import com.jfilowk.elementstest.domain.exception.ErrorBundle;
 import com.jfilowk.elementstest.domain.interactor.GetItemListUseCase;
-import com.jfilowk.elementstest.presentation.internal.exception.ErrorMessageFactory;
+import com.jfilowk.elementstest.presentation.ItemListView;
+import com.jfilowk.elementstest.presentation.exception.ErrorMessageFactory;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import com.jfilowk.elementstest.presentation.model.mapper.ItemModelMapper;
 import java.util.Collection;
@@ -17,6 +18,18 @@ public class ItemListPresenterImpl implements ItemListPresenter {
   private Context context;
   private GetItemListUseCase getItemListUseCase;
   private ItemModelMapper itemModelMapper;
+  private final GetItemListUseCase.ItemListCallback itemListCallback =
+      new GetItemListUseCase.ItemListCallback() {
+
+        @Override public void onItemListLoaded(Collection<Item> itemCollection) {
+          Collection<ItemModel> itemModelCollection = itemModelMapper.transform(itemCollection);
+          showItemList(itemModelCollection);
+        }
+
+        @Override public void onError(ErrorBundle errorBundle) {
+          showError(errorBundle);
+        }
+      };
 
   @Inject public ItemListPresenterImpl(Context context, GetItemListUseCase getItemListUseCase,
       ItemModelMapper itemModelMapper) {
@@ -36,19 +49,6 @@ public class ItemListPresenterImpl implements ItemListPresenter {
   private void getItemList() {
     this.getItemListUseCase.execute(itemListCallback);
   }
-
-  private final GetItemListUseCase.ItemListCallback itemListCallback =
-      new GetItemListUseCase.ItemListCallback() {
-
-        @Override public void onItemListLoaded(Collection<Item> itemCollection) {
-          Collection<ItemModel> itemModelCollection = itemModelMapper.transform(itemCollection);
-          showItemList(itemModelCollection);
-        }
-
-        @Override public void onError(ErrorBundle errorBundle) {
-          showError(errorBundle);
-        }
-      };
 
   private void showItemList(Collection<ItemModel> itemModelCollection) {
     this.view.hideLoading();

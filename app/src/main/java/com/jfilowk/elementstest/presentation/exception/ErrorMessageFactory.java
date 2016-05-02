@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.presentation.internal.exception;
+package com.jfilowk.elementstest.presentation.exception;
 
 import android.content.Context;
 import com.jfilowk.elementstest.R;

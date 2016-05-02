@@ -4,12 +4,9 @@ import com.opencsv.bean.CsvBind;
 
 public class ItemEntity {
 
-  @CsvBind
-  private String title;
-  @CsvBind
-  private String description;
-  @CsvBind
-  private String url;
+  @CsvBind private String title;
+  @CsvBind private String description;
+  @CsvBind private String url;
 
   public ItemEntity() {
   }

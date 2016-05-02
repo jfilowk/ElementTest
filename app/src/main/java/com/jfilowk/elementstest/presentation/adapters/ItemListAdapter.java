@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.presentation.list_csv.adapters;
+package com.jfilowk.elementstest.presentation.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +23,24 @@ public class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
   public ItemListAdapter(Context context, List<ItemModel> itemModelList) {
     this.context = context;
     this.itemModelList = itemModelList;
+  }
+
+  public static String checkStyleString(String string, int maxLength) {
+    string = maxLengthSring(string, maxLength);
+    string = escapeHtml(string);
+    return string;
+  }
+
+  public static String maxLengthSring(String string, int maxLength) {
+    if (string.length() > maxLength) {
+      string = String.format("%s...", string.substring(0, maxLength));
+    }
+    return string;
+  }
+
+  public static String escapeHtml(String string) {
+    string = Html.fromHtml(string).toString();
+    return string;
   }
 
   @Override public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -73,23 +91,5 @@ public class ItemListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             .into(imgItem);
       }
     }
-  }
-
-  public static String checkStyleString(String string, int maxLength) {
-    string = maxLengthSring(string, maxLength);
-    string = escapeHtml(string);
-    return string;
-  }
-
-  public static String maxLengthSring(String string, int maxLength) {
-    if (string.length() > maxLength) {
-      string = String.format("%s...", string.substring(0, maxLength));
-    }
-    return string;
-  }
-
-  public static String escapeHtml(String string) {
-    string = Html.fromHtml(string).toString();
-    return string;
   }
 }

@@ -61,7 +61,7 @@ public class ItemDataRepository implements ItemRepository {
   private void insertItemListCache(Collection<ItemEntity> itemEntityCollection) {
     cacheItemData.insertItemEntityList(itemEntityCollection, new CallbackGeneric<Boolean>() {
       @Override public void onSuccess(Boolean result) {
-        // TODO: save last insert
+        // TODO: save last insert in SharedPreferences and add condition when data is too old.
       }
 
       @Override public void onError(Exception e) {

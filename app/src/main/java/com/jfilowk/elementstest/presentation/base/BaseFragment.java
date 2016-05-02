@@ -1,4 +1,4 @@
-package com.jfilowk.elementstest.base;
+package com.jfilowk.elementstest.presentation.base;
 
 import android.app.Fragment;
 import android.os.Bundle;

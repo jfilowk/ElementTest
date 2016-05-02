@@ -14,9 +14,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.jfilowk.elementstest.R;
-import com.jfilowk.elementstest.base.BaseFragment;
+import com.jfilowk.elementstest.presentation.ItemListView;
+import com.jfilowk.elementstest.presentation.adapters.ItemListAdapter;
+import com.jfilowk.elementstest.presentation.base.BaseFragment;
 import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
-import com.jfilowk.elementstest.presentation.list_csv.adapters.ItemListAdapter;
 import com.jfilowk.elementstest.presentation.model.ItemModel;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,7 +59,6 @@ public class ItemListFragment extends BaseFragment implements ItemListView {
     this.getComponent(ItemComponent.class).inject(this);
     this.presenter.attachView(this);
   }
-
 
   private void loadItemList() {
     this.presenter.loadItemsList();

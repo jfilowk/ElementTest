@@ -3,7 +3,7 @@ package com.jfilowk.elementstest.presentation.list_csv;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import com.jfilowk.elementstest.R;
-import com.jfilowk.elementstest.base.BaseActivity;
+import com.jfilowk.elementstest.presentation.base.BaseActivity;
 import com.jfilowk.elementstest.presentation.internal.di.HasComponent;
 import com.jfilowk.elementstest.presentation.internal.di.components.DaggerItemComponent;
 import com.jfilowk.elementstest.presentation.internal.di.components.ItemComponent;
