@@ -11,18 +11,12 @@
     tools:context=".presentation.main_menu.MainMenu"
     >
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello World!"
-      />
-
   <Button
+      android:id="@+id/btn_show_me"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/show_me_the_csv"
-      android:id="@+id/btn_show_me"
-      android:layout_centerVertical="true"
       android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:text="@string/show_me_the_csv"
       />
 </RelativeLayout>
